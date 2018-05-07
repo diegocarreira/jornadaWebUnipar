@@ -1,0 +1,6 @@
+<div class="filme" ng-repeat="filme in filmes">
+  <img src="{{filme.imagens[0]}}" alt="" class="foto">
+  <span class="titulo">{{filme.titulo}}</span>
+  <span class="genero">{{filme.nome_genero}}</span>
+  <a class="favoritar" ng-click="favoritar(filme.id)">FAVORITAR</a>
+</div>

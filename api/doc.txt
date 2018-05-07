@@ -1,0 +1,211 @@
+Pegar filmes:
+
+GET: /api/v1/filmes
+
+filtros:
+id, int, código do filme
+titulo, string, nome ou parte do nome do filme
+id_genero, int, código do gênero do filme
+nome_genero, string, nome ou parte do nome do gênero do filme
+
+retorno
+[
+    {
+      "id": 1,
+      "titulo": "Capitão América - O Primeiro Vingador",
+      "lancamento": "2011-07-29 00:00:00",
+      "sinopse": "",
+      "id_genero": 2,
+      "nome_genero": "Fantasia",
+      "nota": 5,
+      "qtde_avaliacoes": 2,
+      "qtde_comentarios": 1
+    },
+    {
+      "id": 2,
+      "titulo": "Homem de Ferro",
+      "lancamento": "2008-04-30 00:00:00",
+      "sinopse": "",
+      "id_genero": 2,
+      "nome_genero": "Fantasia",
+      "nota": null,
+      "qtde_avaliacoes": 0,
+      "qtde_comentarios": 0
+    }
+]
+
+====
+
+Pegar gêneros:
+
+GET: /api/v1/generos
+
+filtros:
+id, int, código do gênero
+nome, string, nome ou parte do nome do gênero
+
+retorno:
+
+[
+    {
+      "id": "1",
+      "nome": "Comédia"
+    },
+    {
+      "id": "2",
+      "nome": "Fantasia"
+    }
+]
+
+====
+
+Pegar token:
+
+POST: /api/v1/token
+
+parâmetros:
+email, string, email do usuario - fulano@email.com
+senha, string, senha do usuario - 123456
+
+retorno:
+
+{
+    "token": "c61fc8bf76c150f05c278f5f379b8ca7"
+}
+
+===
+
+Pegar filmes favoritos do usuário:
+
+GET: /api/v1/favoritos
+
+headers:
+token, string, token fornecido no endpoint token
+
+retorno:
+
+[
+    {
+      "id": "1",
+      "titulo": "Capitão América - O Primeiro Vingador",
+      "lancamento": "2011-07-29 00:00:00",
+      "sinopse": "",
+      "favorito": true,
+      "assistido": true,
+      "nota": 4,
+      "comentario": "Um ótimo filme de super herói, guerra e espionagem."
+    },
+    {
+      "id": "2",
+      "titulo": "Homem de Ferro",
+      "lancamento": "2008-04-30 00:00:00",
+      "sinopse": "",
+      "favorito": true,
+      "assistido": true,
+      "nota": 0,
+      "comentario": null
+    }
+]
+
+===
+
+Pegar filmes assistidos do usuário:
+
+GET: /api/v1/assistidos
+
+Mesma definição da consulta de favoritos
+
+===
+
+Pegar filmes avaliados do usuário:
+
+GET: /api/v1/avaliados
+
+Mesma definição da consulta de favoritos
+
+===
+
+Avaliar filme
+
+POST: /api/v1/avaliados
+
+parâmetros:
+id_filme, int, código do filme
+nota, int, Nota do filme (0 à 5)
+comentario, string, Comentário sobre o filme (opcional)
+
+headers:
+token, string, token fornecido no endpoint token
+
+Não possui dados de retorno.
+
+===
+
+Marcar filme como assistido
+
+POST: /api/v1/assistidos
+
+parâmetros:
+id_filme, int, código do filme
+
+headers:
+token, string, token fornecido no endpoint token
+
+Não possui dados de retorno.
+
+===
+
+Remover filme como assistido
+
+DELETE: /api/v1/assistido
+
+parâmetros:
+id_filme, int, código do filme
+
+headers:
+token, string, token fornecido no endpoint token
+
+Não possui dados de retorno.
+
+===
+
+Marcar filme como favorito
+
+POST: /api/v1/favoritos
+
+parâmetros:
+id_filme, int, código do filme
+
+headers:
+token, string, token fornecido no endpoint token
+
+Não possui dados de retorno.
+
+===
+
+Remover filme como favorito
+
+DELETE: /api/v1/favoritos
+
+parâmetros:
+id_filme, int, código do filme
+
+headers:
+token, string, token fornecido no endpoint token
+
+Não possui dados de retorno.
+
+===
+
+Cadastrar usuário
+
+POST: /api/v1/usuarios
+
+parâmetros:
+nome, string, nome do usuário
+email, string, email do usuário
+senha, string, senha do usuário
+
+Não possui dados de retorno
+
+===
